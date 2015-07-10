@@ -94,7 +94,6 @@ import com.owncloud.android.utils.DataHolderUtil;
 import com.owncloud.android.utils.DisplayUtils;
 import com.owncloud.android.utils.ErrorMessageAdapter;
 import com.owncloud.android.utils.PermissionUtil;
-import com.owncloud.android.widgets.ShortcutsWidget;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -155,6 +154,7 @@ public class FileDisplayActivity extends HookActivity
     private SearchView searchView;
     private boolean mUploadFromWidget = false;
     private boolean mNewFromWidget = false;
+    private boolean mRefreshFromWidget = false;
 
     
     @Override
