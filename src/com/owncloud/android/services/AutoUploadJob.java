@@ -2,6 +2,7 @@
  * Nextcloud Android client application
  *
  * @author Tobias Kaminsky
+ * Copyright (C) 2017 Mario Danic
  * Copyright (C) 2016 Tobias Kaminsky
  * Copyright (C) 2016 Nextcloud
  * <p>
@@ -73,6 +74,7 @@ public class AutoUploadJob extends Job {
                     UploadFileOperation.CREATED_AS_INSTANT_PICTURE
             );
         }
+
 
         return Result.SUCCESS;
     }
