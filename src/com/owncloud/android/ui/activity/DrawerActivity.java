@@ -68,32 +68,26 @@ public abstract class DrawerActivity extends ToolbarActivity implements DisplayU
     private static final int ACTION_MANAGE_ACCOUNTS = 101;
     private static final int MENU_ORDER_ACCOUNT = 1;
     private static final int MENU_ORDER_ACCOUNT_FUNCTION = 2;
-
-    /**
-     * menu account avatar radius.
-     */
-    private float mMenuAccountAvatarRadiusDimension;
-
-    /**
-     * current account avatar radius.
-     */
-    private float mCurrentAccountAvatarRadiusDimension;
-
-    /**
-     * other accounts avatar radius.
-     */
-    private float mOtherAccountAvatarRadiusDimension;
-
-    /**
-     * Reference to the drawer layout.
-     */
-    private DrawerLayout mDrawerLayout;
-
     /**
      * Reference to the drawer toggle.
      */
     protected ActionBarDrawerToggle mDrawerToggle;
-
+    /**
+     * menu account avatar radius.
+     */
+    private float mMenuAccountAvatarRadiusDimension;
+    /**
+     * current account avatar radius.
+     */
+    private float mCurrentAccountAvatarRadiusDimension;
+    /**
+     * other accounts avatar radius.
+     */
+    private float mOtherAccountAvatarRadiusDimension;
+    /**
+     * Reference to the drawer layout.
+     */
+    private DrawerLayout mDrawerLayout;
     /**
      * Reference to the navigation view.
      */
@@ -313,11 +307,11 @@ public abstract class DrawerActivity extends ToolbarActivity implements DisplayU
                 Intent settingsIntent = new Intent(getApplicationContext(), Preferences.class);
                 startActivity(settingsIntent);
                 break;
-            case R.id.nav_participate:
+            /*case R.id.nav_participate:
                 Intent participateIntent = new Intent(getApplicationContext(),
                         ParticipateActivity.class);
                 startActivity(participateIntent);
-                break;
+                break;*/
             case R.id.drawer_menu_account_add:
                 createAccount(false);
                 break;

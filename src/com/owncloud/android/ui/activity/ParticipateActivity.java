@@ -47,7 +47,7 @@ public class ParticipateActivity extends FileActivity {
         setupToolbar();
 
         // setup drawer
-        setupDrawer(R.id.nav_participate);
+        //setupDrawer(R.id.nav_participate);
         getSupportActionBar().setTitle(getString(R.string.drawer_participate));
 
         setupContent();
