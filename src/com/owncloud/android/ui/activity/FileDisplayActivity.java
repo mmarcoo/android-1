@@ -144,8 +144,9 @@ public class FileDisplayActivity extends HookActivity
     protected void onCreate(Bundle savedInstanceState) {
         Log_OC.v(TAG, "onCreate() start");
 
-        //Rimetto il tema della prima attività dopo il launch screen
+        //Rimetto il tema della prima attività dopo il launch screen 
         setTheme(R.style.Theme_ownCloud_Toolbar_Drawer);
+
 
         super.onCreate(savedInstanceState); // this calls onAccountChanged() when ownCloud Account
         // is valid
@@ -506,12 +507,14 @@ public class FileDisplayActivity extends HookActivity
      * @param fragment New second Fragment to set.
      */
     private void setSecondFragment(Fragment fragment) {
-        searchView.post(new Runnable() {
-            @Override
-            public void run() {
-                searchView.setQuery("", true);
-            }
-        });
+        if (searchView != null) {
+            searchView.post(new Runnable() {
+                @Override
+                public void run() {
+                    searchView.setQuery("", true);
+                }
+            });
+        }
         setDrawerIndicatorEnabled(false);
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.right_fragment_container, fragment, TAG_SECOND_FRAGMENT);
@@ -774,16 +777,16 @@ public class FileDisplayActivity extends HookActivity
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         if (requestCode == REQUEST_CODE__SELECT_CONTENT_FROM_APPS &&
-            (resultCode == RESULT_OK ||
-            resultCode == UploadFilesActivity.RESULT_OK_AND_MOVE)) {
+                (resultCode == RESULT_OK ||
+                        resultCode == UploadFilesActivity.RESULT_OK_AND_MOVE)) {
 
             requestUploadOfContentFromApps(data, resultCode);
 
         } else if (requestCode == REQUEST_CODE__SELECT_FILES_FROM_FILE_SYSTEM &&
-            (resultCode == RESULT_OK ||
-            resultCode == UploadFilesActivity.RESULT_OK_AND_MOVE ||
-            resultCode == UploadFilesActivity.RESULT_OK_AND_DO_NOTHING ||
-            resultCode == UploadFilesActivity.RESULT_OK_AND_DELETE)) {
+                (resultCode == RESULT_OK ||
+                        resultCode == UploadFilesActivity.RESULT_OK_AND_MOVE ||
+                        resultCode == UploadFilesActivity.RESULT_OK_AND_DO_NOTHING ||
+                        resultCode == UploadFilesActivity.RESULT_OK_AND_DELETE)) {
 
             requestUploadOfFilesFromFileSystem(data, resultCode);
 
@@ -872,8 +875,8 @@ public class FileDisplayActivity extends HookActivity
 
         //getClipData is only supported on api level 16+, Jelly Bean
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN &&
-            contentIntent.getClipData() != null &&
-            contentIntent.getClipData().getItemCount() > 0) {
+                contentIntent.getClipData() != null &&
+                contentIntent.getClipData().getItemCount() > 0) {
 
             for (int i = 0; i < contentIntent.getClipData().getItemCount(); i++) {
                 streamsToUpload.add(contentIntent.getClipData().getItemAt(i).getUri());
@@ -1076,7 +1079,7 @@ public class FileDisplayActivity extends HookActivity
         OCFileListFragment ocFileListFragment = getListOfFilesFragment();
         if (ocFileListFragment != null) {
             if (!mSyncInProgress) {
-                    ocFileListFragment.setEmptyListMessage(false);
+                ocFileListFragment.setEmptyListMessage(false);
             } else {
                 ocFileListFragment.setEmptyListLoadingMessage();
             }
@@ -1210,8 +1213,8 @@ public class FileDisplayActivity extends HookActivity
     private void onRemoveFileOperationFinish(RemoveFileOperation operation,
                                              RemoteOperationResult result) {
         Toast msg = Toast.makeText(this,
-            ErrorMessageAdapter.getErrorCauseMessage(result, operation, getResources()),
-            Toast.LENGTH_LONG);
+                ErrorMessageAdapter.getErrorCauseMessage(result, operation, getResources()),
+                Toast.LENGTH_LONG);
         msg.show();
 
         if (result.isSuccess()) {
@@ -1750,7 +1753,7 @@ public class FileDisplayActivity extends HookActivity
     private class UploadFinishReceiver extends BroadcastReceiver {
         /**
          * Once the file upload has finished -> update view
-         * <p>
+         *
          * {@link BroadcastReceiver} to enable upload feedback in UI
          */
         @Override
